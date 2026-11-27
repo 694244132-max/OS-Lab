@@ -10,7 +10,6 @@ int main() {
     cout << "        Lab 1: Computer Information       " << endl;
     cout << "==========================================" << endl;
 
-    // 1. CPU Name
     cout << "\n[1] CPU Name:" << endl;
     ifstream cpuinfo("/proc/cpuinfo");
     string line;
@@ -26,7 +25,6 @@ int main() {
         system("lscpu | grep -i 'model name' || uname -p");
     }
 
-    // 2. Memory Information
     cout << "\n[2] Memory Information:" << endl;
     ifstream meminfo("/proc/meminfo");
     int memCount = 0;
@@ -35,7 +33,6 @@ int main() {
         memCount++;
     }
 
-    // 3. OS Name and Version
     cout << "\n[3] Operating System Name & Version:" << endl;
     ifstream osrelease("/etc/os-release");
     bool foundOs = false;
@@ -54,11 +51,9 @@ int main() {
         system("uname -sr");
     }
 
-    // 4. Storage Information
     cout << "\n[4] Storage Information:" << endl;
     system("df -h --total | grep -E 'Filesystem|/$|total'");
 
-    // 5. Running Processes
     cout << "\n[5] Running Processes (Top 15):" << endl;
     system("ps -eo pid,ppid,comm --no-headers | head -n 15");
 
